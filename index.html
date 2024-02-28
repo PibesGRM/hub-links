@@ -34,23 +34,24 @@
     }
 
     .link {
-      padding: 20px;
-      background-color: #007bff;
+      padding: 15px;
+      background: linear-gradient(45deg, #007bff, #0056b3); /* Fondo degradado */
       color: #fff;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 8px; /* Bordes redondeados */
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones más suaves */
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent; /* Borde transparente por defecto */
     }
 
     .link:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-3px); /* Efecto de levantamiento al hacer hover */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+      border-color: #007bff; /* Cambio de color del borde al hacer hover */
     }
 
     .link i {
@@ -60,22 +61,25 @@
 </head>
 <body>
   <div class="container">
-    <h1>Página de Inicio Rápida</h1>
+    <img src="https://imgur.com/KA2PDn5.jpeg" alt="Hub de Enlaces" style="display: block; margin: auto; border-radius: 50px;">
     <div id="links"></div>
   </div>
 
   <script>
     const links = [
-      { text: 'Sistema de Tickets', url: 'https://ejemplo.com/tickets', icon: '🎫' },
-      { text: 'Documentación Interna', url: 'https://ejemplo.com/documentacion', icon: '📚' },
-      { text: 'Herramientas de Diagnóstico', url: 'https://ejemplo.com/herramientas', icon: '🛠️' },
-      { text: 'Foro de Discusión', url: 'https://ejemplo.com/foro', icon: '💬' },
-      { text: 'Calendario de Mantenimiento', url: 'https://ejemplo.com/calendario', icon: '📅' },
-      { text: 'Base de Conocimientos', url: 'https://ejemplo.com/base-conocimientos', icon: '📖' },
-      { text: 'Generador de Informes', url: 'https://ejemplo.com/informes', icon: '📊' },
+      { text: 'Jira GRO', url: 'https://gruporomeu.atlassian.net/jira/servicedesk/projects/GRO/queues/custom/470', icon: '🎫' },
+      { text: 'Jira Portal Usuario', url: 'https://gruporomeu.atlassian.net/servicedesk/customer/portals', icon: '💻' },
+      { text: 'Confluence', url: 'https://gruporomeu.atlassian.net/wiki/spaces/CAUGR/pages/200310787/Procedimientos', icon: '📚' },
+      { text: 'Sharepoint Equipo', url: 'https://romeugroup.sharepoint.com/sites/AgentesCAUGroup/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FAgentesCAUGroup%2FDocumentos%20compartidos%2FGeneral&viewid=b257e6de%2D5631%2D4697%2D8793%2Da1744f423c43', icon: '📂' },
+      { text: 'Calendario de Teletrabajo', url: 'https://romeugroup.sharepoint.com/:x:/r/sites/AgentesCAUGroup/_layouts/15/Doc.aspx?sourcedoc=%7B5140CDA5-F126-4607-B643-F6BFE06BCD6E%7D&file=Cuadrante%20Home%20Office%20CAU%20Group%202024.xlsx&action=default&mobileredirect=true', icon: '📅' },
+      { text: 'Portal', url: 'https://portal.romeu.com/home/main', icon: '👥' },
+      { text: 'CRM/REM', url: 'https://crm.gruporomeu.zone/', icon: '📊' },
+      { text: 'Repodoc', url: 'https://grm-pro-repodoc-web.azurewebsites.net/home', icon: '📄' },
       { text: 'Portal de Usuarios', url: 'https://ejemplo.com/usuarios', icon: '👥' },
       { text: 'Lista de Verificación', url: 'https://ejemplo.com/verificacion', icon: '✅' },
-      { text: 'Actualizaciones y Anuncios', url: 'https://ejemplo.com/actualizaciones', icon: '📢' }
+      { text: 'User Permission', url: 'https://grm-pro-usermanagement-web.azurewebsites.net/home/main', icon: '<img src="https://imgur.com/wDGRMAc.png" alt="Dorita Icon" width="20">' },
+      { text: 'Dorita', url: 'http://dorita.gruporomeu.corp/', icon: '<img src="https://imgur.com/ohLETZs.png" alt="Dorita Icon" width="20">' }
+      
     ];
 
     const linksContainer = document.getElementById('links');
@@ -83,8 +87,9 @@
     links.forEach(link => {
       const linkElement = document.createElement('a');
       linkElement.href = link.url;
-      linkElement.textContent = link.icon + ' ' + link.text;
+      linkElement.innerHTML = `<i>${link.icon}</i> ${link.text}`;
       linkElement.className = 'link';
+      linkElement.setAttribute('target', '_blank'); // Abrir enlace en una nueva pestaña
       linksContainer.appendChild(linkElement);
     });
   </script>
