@@ -56,6 +56,26 @@
 
     .link i {
       margin-right: 10px;
+      }
+   /* Estilo para la descripción emergente */
+    .tooltip {
+      position: absolute;
+      top: 100%; /* Posiciona la descripción emergente debajo del enlace */
+      left: 50%;
+      transform: translateX(-50%); /* Centra horizontalmente */
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      opacity: 0; /* Oculta la descripción emergente por defecto */
+      transition: opacity 0.3s ease;
+      pointer-events: none; /* Evita que la descripción emergente sea clickeable */
+    }
+
+    .link:hover .tooltip {
+      opacity: 1; /* Muestra la descripción emergente al hacer hover */
+      pointer-events: auto; /* Permite que la descripción emergente sea clickeable */
     }
   </style>
 </head>
@@ -67,20 +87,24 @@
 
   <script>
     const links = [
-      { text: 'Jira GRO', url: 'https://gruporomeu.atlassian.net/jira/servicedesk/projects/GRO/queues/custom/470', icon: '🎫' },
-      { text: 'Jira Portal Usuario', url: 'https://gruporomeu.atlassian.net/servicedesk/customer/portals', icon: '💻' },
-      { text: 'Confluence', url: 'https://gruporomeu.atlassian.net/wiki/spaces/CAUGR/pages/200310787/Procedimientos', icon: '<img src="https://imgur.com/dUFrFnL.png" alt="Confluence" width="20">' },
-      { text: 'Sharepoint Equipo', url: 'https://romeugroup.sharepoint.com/sites/AgentesCAUGroup/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FAgentesCAUGroup%2FDocumentos%20compartidos%2FGeneral&viewid=b257e6de%2D5631%2D4697%2D8793%2Da1744f423c43', icon: '📂' },
+      { text: 'Jira GRO', url: 'https://gruporomeu.atlassian.net/jira/servicedesk/projects/GRO/queues/custom/470', icon: '🎫', tooltip: 'Gestión de ticketing' },
+      { text: 'Jira Portal Usuario', url: 'https://gruporomeu.atlassian.net/servicedesk/customer/portals', icon: '💻', tooltip: 'Portal tickets usuario' },
+      { text: 'Confluence', url: 'https://gruporomeu.atlassian.net/wiki/spaces/CAUGR/pages/200310787/Procedimientos', icon: '<img src="https://imgur.com/dUFrFnL.png" alt="Confluence" width="20">', tooltip: 'Documentación técnica' },
+      { text: 'Sharepoint Equipo', url: 'https://romeugroup.sharepoint.com/sites/AgentesCAUGroup/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FAgentesCAUGroup%2FDocumentos%20compartidos%2FGeneral&viewid=b257e6de%2D5631%2D4697%2D8793%2Da1744f423c43', icon: '📂', tooltip: 'Documentos del equipo en la nube' },
       { text: 'Calendario de Teletrabajo', url: 'https://romeugroup.sharepoint.com/:x:/r/sites/AgentesCAUGroup/_layouts/15/Doc.aspx?sourcedoc=%7B5140CDA5-F126-4607-B643-F6BFE06BCD6E%7D&file=Cuadrante%20Home%20Office%20CAU%20Group%202024.xlsx&action=default&mobileredirect=true', icon: '📅' },
-      { text: 'Portal', url: 'https://portal.romeu.com/home/main', icon: '<img src="https://imgur.com/OqJfQBR.png" alt="Portal" width="20">' },
+      { text: 'Portal', url: 'https://portal.romeu.com/home/main', icon: '<img src="https://imgur.com/OqJfQBR.png" alt="Portal" width="20">', tooltip : 'Portal Corporativo' },
       { text: 'CRM/REM', url: 'https://crm.gruporomeu.zone/', icon: '📊' },
       { text: 'Repodoc', url: 'https://grm-pro-repodoc-web.azurewebsites.net/home', icon: '<img src="https://imgur.com/OqJfQBR.png" alt="Repodoc" width="20">' },
       { text: 'Invoice Tracker', url: 'https://grm-pro-invoicetracker-web.azurewebsites.net/home', icon: '<img src="https://imgur.com/OqJfQBR.png" alt="Invoice" width="20">' },
       { text: 'User Permission', url: 'https://grm-pro-usermanagement-web.azurewebsites.net/home/main', icon: '<img src="https://imgur.com/wDGRMAc.png" alt="User Permission" width="20">' },
       { text: 'Dorita', url: 'http://dorita.gruporomeu.corp/', icon: '<img src="https://imgur.com/ohLETZs.png" alt="Dorita Icon" width="20">' },
-      { text: 'Staff Permission', url: 'https://portal.gruporomeu.zone/Staff', icon: '✅' },
-      { text: 'DevOps', url: 'https://dev.azure.com/gruporomeu/GrmGroup', icon: '<img src="https://imgur.com/undefined.png" alt="Devops" width="20">' }
-      
+      { text: 'Staff Permission', url: 'https://portal.gruporomeu.zone/Staff', icon: '✅', tooltip: 'Portal antiguo' },
+      { text: 'DevOps', url: 'https://dev.azure.com/gruporomeu/GrmGroup', icon: '<img src="https://imgur.com/undefined.png" alt="Devops" width="20">', tooltip: 'Task/Bugs DEV' },
+      { text: 'Click & Cargo', url: 'http://clickandcargo.gruporomeu.corp:9080/ClickAndCargo/app/login.xhtml;jsessionid=1273DB56ED5045EF1C7080314A9DF42C', icon: '🚢'},
+      { text: 'File to Voucher', url: 'https://grm-pro-filestovoucher-web.azurewebsites.net/merge-pdf', icon: '<img src="https://imgur.com/OqJfQBR.png" alt="Invoice" width="20">'},
+      { text: 'CUPs', url: 'https://192.168.250.214/printers/', icon: '<img src="https://192.168.250.214/images/cups-icon.png" alt="Cups" width="20">', tooltip: 'Gestión de impresoras'},
+      { text: 'Master Notificaciones', url: 'https://master.gruporomeu.zone/#/login', icon: '<img src="https://imgur.com/WAW5rhq" alt="Master" width="20">'},
+      { text: 'Web Notificaciones', url: 'https://notifications.gruporomeu.zone/#/login', icon: '<img src="https://imgur.com/WAW5rhq" alt="Master" width="20">', tooltip: 'Desbloqueo de bookings'}
     ];
 
     const linksContainer = document.getElementById('links');
@@ -91,6 +115,15 @@
       linkElement.innerHTML = `<i>${link.icon}</i> ${link.text}`;
       linkElement.className = 'link';
       linkElement.setAttribute('target', '_blank'); // Abrir enlace en una nueva pestaña
+      linksContainer.appendChild(linkElement);
+      
+      if (link.tooltip) {
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = link.tooltip;
+        linkElement.appendChild(tooltip);
+      }
+
       linksContainer.appendChild(linkElement);
     });
   </script>
