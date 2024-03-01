@@ -34,48 +34,50 @@
     }
 
     .link {
+      position: relative;
       padding: 15px;
-      background: linear-gradient(45deg, #007bff, #0056b3); /* Fondo degradado */
+      background: #007bff; /* Cambiado el degradado a color sólido */
       color: #fff;
       text-decoration: none;
-      border-radius: 8px; /* Bordes redondeados */
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones más suaves */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border: 2px solid transparent; /* Borde transparente por defecto */
+      border: 2px solid transparent;
     }
 
     .link:hover {
-      transform: translateY(-3px); /* Efecto de levantamiento al hacer hover */
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-      border-color: #007bff; /* Cambio de color del borde al hacer hover */
+      transform: translateY(-3px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      border-color: #fff;
     }
 
     .link i {
       margin-right: 10px;
-      }
-   /* Estilo para la descripción emergente */
+    }
+
+    /* Estilo para la descripción emergente */
     .tooltip {
       position: absolute;
-      top: 100%; /* Posiciona la descripción emergente debajo del enlace */
+      bottom: calc(100% + 5px); /* Posiciona la descripción emergente encima del enlace */
       left: 50%;
-      transform: translateX(-50%); /* Centra horizontalmente */
+      transform: translateX(-50%);
       background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
-      padding: 10px;
+      padding: 8px 12px; /* Modificado el padding */
       border-radius: 5px;
       font-size: 14px;
-      opacity: 0; /* Oculta la descripción emergente por defecto */
+      opacity: 0;
       transition: opacity 0.3s ease;
-      pointer-events: none; /* Evita que la descripción emergente sea clickeable */
+      pointer-events: none;
+      white-space: nowrap; /* Evita el desbordamiento de texto */
     }
 
     .link:hover .tooltip {
-      opacity: 1; /* Muestra la descripción emergente al hacer hover */
-      pointer-events: auto; /* Permite que la descripción emergente sea clickeable */
+      opacity: 1;
     }
   </style>
 </head>
@@ -106,7 +108,6 @@
       { text: 'Master Notificaciones', url: 'https://master.gruporomeu.zone/#/login', icon: '<img src="https://imgur.com/WAW5rhq.png" alt="Master" width="20">'},
       { text: 'Web Notificaciones', url: 'https://notifications.gruporomeu.zone/#/login', icon: '<img src="https://imgur.com/WAW5rhq.png" alt="Master" width="20">', tooltip: 'Desbloqueo de bookings'}
     ];
-
     const linksContainer = document.getElementById('links');
 
     links.forEach(link => {
@@ -114,7 +115,7 @@
       linkElement.href = link.url;
       linkElement.innerHTML = `<i>${link.icon}</i> ${link.text}`;
       linkElement.className = 'link';
-      linkElement.setAttribute('target', '_blank'); // Abrir enlace en una nueva pestaña
+      linkElement.setAttribute('target', '_blank');
       linksContainer.appendChild(linkElement);
       
       if (link.tooltip) {
@@ -123,8 +124,6 @@
         tooltip.textContent = link.tooltip;
         linkElement.appendChild(tooltip);
       }
-
-      linksContainer.appendChild(linkElement);
     });
   </script>
 </body>
