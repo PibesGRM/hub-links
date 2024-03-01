@@ -79,6 +79,38 @@
     .link:hover .tooltip {
       opacity: 1;
     }
+
+   .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    .dark-mode-icon {
+      font-size: 24px;
+    }
+
+    .dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-mode-toggle.dark-mode {
+      color: #fff;
+    }
+
+    .dark-mode #links {
+      background-color: #333;
+    }
+
+    /* Estilo para el contenedor principal en modo oscuro */
+    .dark-mode .container {
+      background-color: #333;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 <body>
@@ -87,6 +119,10 @@
     <div id="links"></div>
   </div>
 
+  <!-- Botón para activar/desactivar el modo oscuro -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <i class="dark-mode-icon">🌙</i> <!-- Icono para el modo oscuro -->
+  </div>
   <script>
     const links = [
       { text: 'Jira GRO', url: 'https://gruporomeu.atlassian.net/jira/servicedesk/projects/GRO/queues/custom/470', icon: '🎫', tooltip: 'Gestión de ticketing' },
@@ -125,6 +161,11 @@
         linkElement.appendChild(tooltip);
       }
     });
+ // Función para activar/desactivar el modo oscuro
+     function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode'); // Toggle de la clase 'dark-mode' en el body
+    }
   </script>
 </body>
 </html>
