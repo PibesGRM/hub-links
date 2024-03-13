@@ -149,7 +149,7 @@
 
     links.forEach(link => {
       const linkElement = document.createElement('a');
-      linkElement.href = link.url;
+      linkElement.href = link.url ? link.url : link.href;
       linkElement.innerHTML = `<i>${link.icon}</i> ${link.text}`;
       linkElement.className = 'link';
       linkElement.setAttribute('target', '_blank');
