@@ -1,5 +1,7 @@
 {
   "routes": [
-    { "href": "/(.*)", "dest": "/$1" }
+    { "handle": "filesystem" },
+    { "src": "/generador.html", "dest": "/generador.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
