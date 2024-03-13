@@ -1,5 +1,8 @@
-{
-  "routes": [
-    { "handle": "filesystem" }
+async rewrites() {
+  return [
+	{
+		source: "/html/:slug",
+		destination: "/html/:slug.html",
+	}
   ]
-}
+},
