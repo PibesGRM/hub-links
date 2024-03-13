@@ -1,6 +1,5 @@
-rewrites: async () => [
-    {
-      source: "/",
-      destination: "/",
-    },
-  ],
+{
+  "routes": [
+    { "href": "/(.*)", "dest": "/$1" }
+  ]
+}
