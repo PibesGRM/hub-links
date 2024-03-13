@@ -1,8 +1,6 @@
-async rewrites() {
-  return [
-	{
-		source: "/html/:slug",
-		destination: "/html/:slug.html",
-	}
-  ]
-},
+rewrites: async () => [
+    {
+      source: "/",
+      destination: "/",
+    },
+  ],
