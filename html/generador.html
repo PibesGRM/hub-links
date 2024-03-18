@@ -65,6 +65,51 @@
     margin-bottom: 10px;
     font-size: 14px;
   }
+
+  /* Estilos para el modo oscuro */
+  .dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .dark-mode .container {
+    background-color: #444;
+    color: #fff;
+  }
+
+  .dark-mode input,
+  .dark-mode button {
+    background-color: #555;
+    color: #fff;
+  }
+
+  /* Estilos para el botón de cambio de modo oscuro */
+  .dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 24px;
+  }
+
+  /* Estilos para el botón de regresar a la página principal */
+  .back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+  }
+
+  .back-button:hover {
+    background-color: #0056b3;
+  }
 </style>
 </head>
 <body>
@@ -77,6 +122,14 @@
   <button onclick="generatePassword()">Generar Contraseña</button>
   <ul id="password"></ul>
 </div>
+
+<!-- Botón para activar/desactivar el modo oscuro -->
+<div class="dark-mode-toggle" onclick="toggleDarkMode()">
+  <i class="dark-mode-icon">🌙</i> <!-- Icono para el modo oscuro -->
+</div>
+
+<!-- Botón para regresar a la página principal -->
+<button class="back-button" onclick="goToIndex()">Volver</button>
 
 <script>
 function generatePassword() {
@@ -111,6 +164,17 @@ function generatePassword() {
   password = password.split('').sort(() => Math.random() - 0.5).join('');
   
   document.getElementById('password').innerHTML = '<li>' + password + '</li>';
+}
+
+// Función para activar/desactivar el modo oscuro
+function toggleDarkMode() {
+  const body = document.body;
+  body.classList.toggle('dark-mode'); // Toggle de la clase 'dark-mode' en el body
+}
+
+// Función para redirigir a la página principal
+function goToIndex() {
+  window.location.href = './index.html';
 }
 </script>
 </body>
